@@ -1,0 +1,509 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff69b4, #ff1493, #ffc0cb, #ffb6c1, #ff69b4);
+    background-size: 400% 400%;
+    animation: pinkGradientShift 8s ease infinite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.site-header {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+    text-align: center;
+    z-index: 100;
+    position: relative;
+    flex-shrink: 0;
+    animation: slideInFromTop 1s ease-out;
+}
+
+.header-content h1 {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    animation: fadeInScale 1.2s ease-out 0.3s both;
+}
+
+.header-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    margin: 2px 0 0 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInScale 1.2s ease-out 0.6s both;
+}
+
+/* Footer Styles */
+.site-footer {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 0;
+    text-align: center;
+    z-index: 100;
+    position: relative;
+    flex-shrink: 0;
+    animation: slideInFromBottom 1s ease-out;
+}
+
+.footer-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    margin: 2px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInScale 1.2s ease-out 0.4s both;
+}
+
+/* Floating hearts background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, transparent 20px, transparent 21px),
+        radial-gradient(circle at 40% 40%, transparent 15px, transparent 16px),
+        radial-gradient(circle at 90% 30%, transparent 18px, transparent 19px),
+        radial-gradient(circle at 70% 90%, transparent 12px, transparent 13px),
+        radial-gradient(circle at 10% 20%, transparent 22px, transparent 23px),
+        radial-gradient(circle at 60% 70%, transparent 16px, transparent 17px);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* Animated floating hearts */
+.floating-heart {
+    position: fixed;
+    font-size: 16px;
+    color: rgba(255, 182, 193, 0.8);
+    z-index: -1;
+    pointer-events: none;
+    animation: floatHeart 8s infinite linear;
+    user-select: none;
+}
+
+.floating-heart.small {
+    font-size: 12px;
+    color: rgba(255, 182, 193, 0.6);
+}
+
+.floating-heart.large {
+    font-size: 24px;
+    color: rgba(255, 182, 193, 0.9);
+}
+
+@keyframes pinkGradientShift {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(-10vh) translateX(5px) rotate(15deg) scale(1);
+    }
+    25% {
+        transform: translateY(-25vh) translateX(-10px) rotate(-10deg) scale(1.1);
+    }
+    50% {
+        transform: translateY(-50vh) translateX(15px) rotate(25deg) scale(0.9);
+    }
+    75% {
+        transform: translateY(-75vh) translateX(-5px) rotate(-15deg) scale(1.05);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(-90vh) translateX(10px) rotate(10deg) scale(1);
+    }
+    100% {
+        transform: translateY(-100vh) translateX(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Open Button Styles */
+.open-button {
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    border: none;
+    border-radius: 50px;
+    padding: 20px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: bounceInCenter 1.5s ease-out 0.8s both;
+}
+
+.open-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, #ff5252, #ff8f00);
+}
+
+.open-button:active {
+    transform: translateY(-2px);
+}
+
+/* Hidden Class */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Birthday Cake Styles */
+.birthday-cake {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: all 1s ease;
+    z-index: 10;
+}
+
+.birthday-cake.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cake-base, .cake-middle, .cake-top {
+    margin: 0 auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+.cake-base {
+    width: 200px;
+    height: 80px;
+    background: linear-gradient(45deg, #8B4513, #A0522D);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #654321;
+}
+
+.cake-middle {
+    width: 160px;
+    height: 60px;
+    background: linear-gradient(45deg, #FF69B4, #FFB6C1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #FF1493;
+    margin-top: -10px;
+}
+
+.cake-top {
+    width: 120px;
+    height: 40px;
+    background: linear-gradient(45deg, #32CD32, #98FB98);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #228B22;
+    margin-top: -10px;
+}
+
+/* Candles */
+.candles {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+}
+
+.candle {
+    width: 8px;
+    height: 30px;
+    background: linear-gradient(to bottom, #FFD700, #FFA500);
+    border-radius: 2px;
+}
+
+.flames {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+}
+
+.flame {
+    width: 6px;
+    height: 12px;
+    background: radial-gradient(circle, #FF4500, #FF6347);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0% { transform: rotate(-2deg) scale(1); }
+    100% { transform: rotate(2deg) scale(1.1); }
+}
+
+/* Modals Container */
+.modals-container {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    z-index: 20;
+    transition: all 0.5s ease;
+}
+
+.modals-container.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* Individual Modal Styles */
+.modal {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    max-width: 300px;
+    width: 100%;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.6s ease;
+    backdrop-filter: blur(10px);
+}
+
+/* Specific styling for center modal to make it wider */
+.center-modal {
+    margin-top: 25px;
+    max-width: 500px;
+    min-width: 450px;
+}
+
+.modal.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.left-modal.show {
+    animation: slideInLeft 0.8s ease;
+}
+
+.center-modal.show {
+    animation: fadeInUp 0.8s ease;
+}
+
+.right-modal.show {
+    animation: slideInRight 0.8s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px) translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px) translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Entrance Animations for Site Load */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceInCenter {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(-90deg);
+        opacity: 0.8;
+    }
+    70% {
+        transform: scale(0.9) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.modal-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .header-content p {
+        font-size: 0.8rem;
+    }
+    
+    .site-header {
+        padding: 8px 0;
+    }
+    
+    .site-footer {
+        padding: 6px 0;
+    }
+    
+    .footer-content p {
+        font-size: 0.7rem;
+        margin: 1px 0;
+    }
+    
+    .modals-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        overflow-y: auto;
+        max-height: calc(100vh - 100px);
+        top: 50px;
+        height: calc(100vh - 100px);
+    }
+    
+    .modal {
+        max-width: 85%;
+        margin: 5px 0;
+        padding: 20px;
+    }
+    
+    .center-modal {
+        max-width: 90%;
+        min-width: unset;
+    }
+    
+    .birthday-cake {
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+    
+    .birthday-cake.show {
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+    
+    .open-button {
+        padding: 15px 30px;
+        font-size: 20px;
+    }
+}
